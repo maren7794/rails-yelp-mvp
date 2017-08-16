@@ -1,0 +1,46 @@
+<div class = "containter">
+  <div class = "row">
+    <div class= "col-sm-6 col-sm-offset-4">
+      <h2><%= @restaurant.name %></h2>
+      <p><%= @restaurant.address %></p>
+      <p><%= @restaurant.phone_number %></p>
+      <p><%= @restaurant.category %></p>
+
+      <h4><strong>Reviews</strong></h4>
+      <div class = "review-list">
+        <ul>
+          <% @restaurant.reviews.each do |r| %>
+            <li>
+              <div class="rating">
+              <div class="review-left">
+                <%= r.content %>
+              </div>
+
+                <div class="review-rigth">
+                  <% r.rating.times do %>
+                    <i class="fa fa-star" aria-hidden="true" style="color: #FEAB6C;"></i>
+                  <% end %>
+                  <% (5 - r.rating).times do %>
+                    <i class="fa fa-star" aria-hidden="true" style="color:#D9D9D9"></i>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="new-review">
+      <h4><strong>Write your own review!</strong></h4>
+
+        <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.submit %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

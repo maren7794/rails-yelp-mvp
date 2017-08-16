@@ -1,0 +1,21 @@
+  <div class = "containter">
+    <div class = "row">
+      <div class= "col-sm-6 col-sm-offset-4">
+
+      <% @restaurants.each do |restaurant| %>
+      <div class= "restaurant">
+        <h2> <%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+        <p><%= restaurant.address %></p>
+        <p><%= restaurant.phone_number %></p>
+        <p><%= restaurant.category %></p>
+        <%= link_to "Delete me", restaurant_path(restaurant), method: :delete, class: "btn btn-primary" %>
+        <%= link_to "Edit me", edit_restaurant_path(restaurant), class: "btn btn-primary" %>
+        <%= link_to "Write a review", new_restaurant_review_path(restaurant), class: "btn btn-primary" %>
+      </div>
+
+      <% end %>
+
+      <p ><%= link_to "Add a new restaurant", new_restaurant_path, class: "btn btn-info button-new-restaurant"%></p>
+    </div>
+  </div>
+</div>
